@@ -1,4 +1,3 @@
-node_modules
 .DS_Store
 **/.DS_Store
 dist
@@ -6,14 +5,12 @@ dist-ssr
 build
 *.local
 .vscode/
-node_modules/
 
 .yalc
 yalc.lock
 // 根目录下的测试用文件
 demo.*
-es
-lib
+
 
 # rollup打包后的文件体积分析文件
 stats.html
