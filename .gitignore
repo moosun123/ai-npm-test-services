@@ -1,0 +1,30 @@
+node_modules
+.DS_Store
+**/.DS_Store
+dist
+dist-ssr
+build
+*.local
+.vscode/
+
+.yalc
+yalc.lock
+// 根目录下的测试用文件
+demo.*
+es
+lib
+
+# rollup打包后的文件体积分析文件
+stats.html
+yarn-error.log
+
+
+cypress/videos
+cypress/screenshots
+cypress/sso.json
+
+examples/src/libs/register.ts
+
+// git hook期间检查TS类型生成的config文件
+
+
