@@ -6,6 +6,7 @@ dist-ssr
 build
 *.local
 .vscode/
+node_modules/
 
 .yalc
 yalc.lock
