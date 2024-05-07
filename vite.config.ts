@@ -3,13 +3,15 @@ import { createVuePlugin } from 'vite-plugin-vue2'
 import path from 'path'
 import dts from 'vite-plugin-dts'
 import { apiProxyDomain } from './localEnvConfig'
+import { visualizer } from "rollup-plugin-visualizer";
+import viteCompression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
     outDir: 'es',
     minify: false,
-    sourcemap: false,
+    sourcemap:false,
     rollupOptions: {
       external: ['vue', '@ss/mtd-vue'],
       output: [
@@ -17,7 +19,7 @@ export default defineConfig({
           //打包格式
           format: 'es',
           //打包后文件名
-          entryFileNames: '[name].mjs',
+          entryFileNames: '[name].js',
           //让打包目录和我们目录对应
           preserveModules: true,
           exports: 'named',
@@ -31,14 +33,24 @@ export default defineConfig({
       name: 'index'
     }
   },
-
+  css: {
+    modules: false
+  },
   plugins: [
     createVuePlugin(),
     dts({
       entryRoot: './src',
       outDir: ['es/src', 'lib/src'],
       tsconfigPath: './tsconfig.json'
-    })
+    }),
+    viteCompression(),
+    visualizer({
+      gzipSize: true,
+      brotliSize: true,
+      emitFile: false,
+      filename: "test.html", //分析图生成的文件名
+      open:true //如果存在本地服务端口，将在打包后自动展示
+    }),
   ],
   server: {
     proxy: {
@@ -105,7 +117,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@infrastructure': path.resolve(__dirname, 'src/infrastructure'),
-      '@bizCore': path.resolve(__dirname, 'src/bizCore'),
+      '@components': path.resolve(__dirname, 'src/components'),
       '@api': path.resolve(__dirname, 'src/api')
     }
   }

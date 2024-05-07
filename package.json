@@ -1,11 +1,13 @@
 {
   "name": "ai-npm-test-services",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "main": "es/src/components/index.js",
+  "types": "es/src/components/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "link:add": "yarn link && yarn link ai-analysis-services",
+    "link:add": "yarn link && yarn link 'ai-analysis-services'",
     "link:remove": "yarn unlink ai-analysis-services && yarn unlink"
   },
   "dependencies": {
@@ -20,6 +22,7 @@
     "markdown-it-katex": "^2.0.3",
     "markdown-it-link-attributes": "^4.0.1",
     "mitt": "^3.0.1",
+    "vite-plugin-compression": "^0.5.1",
     "vue": "2.6.14"
   },
   "devDependencies": {
@@ -28,6 +31,7 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/runtime-dom": "3.1.5",
     "eslint": "^9.1.1",
+    "rollup-plugin-visualizer": "^5.12.0",
     "sass": "^1.43.4",
     "sass-loader": "7.3.1",
     "sass-resources-loader": "2.0.1",
